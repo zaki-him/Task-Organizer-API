@@ -5,6 +5,8 @@ import { TasksModule } from './tasks/tasks.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import dotenv from 'dotenv'
+import { Task } from './tasks/tasks.entity';
+import { User } from './users/user.entity';
 
 dotenv.config()
 
@@ -16,6 +18,7 @@ dotenv.config()
     username: 'postgres',
     password: process.env.DB_PASSWORD,
     database: 'taskDB',
+    entities: [Task, User],
     autoLoadEntities: true,
     synchronize: true
   }), TasksModule, UsersModule],
